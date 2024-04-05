@@ -43,5 +43,4 @@ app.post('/api/checkout', async (req, res) => {
   }
 });
 
-// Export the app for Vercel to run as a serverless function
 module.exports = app;
