@@ -24,7 +24,7 @@ app.post("/api/checkout", async (req, res) => {
           description: item.description,
           images: [item.imageUrl],
         },
-        unit_amount: item.price * 100, // Convert price to cents
+        unit_amount: Math.round(item.price * 100),
       },
       quantity: item.quantity,
     }));
@@ -41,6 +41,7 @@ app.post("/api/checkout", async (req, res) => {
     res.json({ sessionId: session.id }); // This sends the sessionId back to your frontend
   } catch (err) {
     console.error(err);
+    console.error("Stripe error:", err.message);
     res.status(500).json({ error: "Error creating checkout session" });
   }
 });
