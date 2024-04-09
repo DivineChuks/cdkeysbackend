@@ -34,7 +34,7 @@ app.post("/api/checkout", async (req, res) => {
       line_items: lineItems,
       mode: "payment",
       success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.origin}/cancelled`,
+      cancel_url: `${req.headers.origin}`,
     });
 
     console.log("sessionId---->", session.id); // This will log the sessionId to your server's console
